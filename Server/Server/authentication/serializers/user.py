@@ -1,3 +1,6 @@
+from Server.authentication.models import CustomUser
+from Server.utils.DynamicFieldsSerializer import DynamicFieldsModelSerializer
+
 
 class CustomUserSerializer(DynamicFieldsModelSerializer):
 

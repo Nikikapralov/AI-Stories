@@ -6,12 +6,17 @@ from django.shortcuts import render
 from datetime import datetime
 
 from django.contrib.auth import authenticate
+from rest_auth.app_settings import LoginSerializer
+from rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.status import HTTP_202_ACCEPTED, HTTP_201_CREATED, HTTP_403_FORBIDDEN, HTTP_200_OK
 from rest_framework.views import APIView
+
+from Server.ai_stories.models import UserAccount
+from Server.authentication.models import CustomUser
 
 
 class Register(ObtainAuthToken):
