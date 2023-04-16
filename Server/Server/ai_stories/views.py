@@ -1,12 +1,12 @@
 from rest_framework import generics
 
-class ReadEditDeleteAdvertisement(drf_mixins.RetrieveModelMixin,
+class ReadEditDeleteStory(drf_mixins.RetrieveModelMixin,
                           drf_mixins.UpdateModelMixin,
                           drf_mixins.DestroyModelMixin,
                           drf_generics.GenericAPIView):
 
     permission_classes = [perms.IsAuthenticated, IsOwnerOrReadOnly]
-    serializer_class = AdvertisementSerializer
+    serializer_class = StorySerializer
     queryset = Advertisement.objects.all()
 
     def get(self, request, *args, **kwargs):
@@ -19,13 +19,13 @@ class ReadEditDeleteAdvertisement(drf_mixins.RetrieveModelMixin,
         return self.destroy(request, *args, **kwargs)
 
 
-class CreateReadAdvertisements(drf_mixins.ListModelMixin,
+class CreateReadStories(drf_mixins.ListModelMixin,
                         drf_mixins.CreateModelMixin,
                         drf_generics.GenericAPIView):
 
     permission_classes = [perms.IsAuthenticated]
-    serializer_class = AdvertisementSerializer
-    queryset = Advertisement.objects.all()
+    serializer_class = StorySerializer
+    queryset = Story.objects.all()
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
